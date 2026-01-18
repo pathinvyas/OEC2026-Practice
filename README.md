@@ -20,17 +20,17 @@
 - You will need Docker or Podman installed
 - Worse performance than native app
 
-### 1. Build Image
+#### 1. Build Image
 ```bash
 docker build -t oec2026-web-tethys .
 ```
-### 2. Run Image
+#### 2. Run Image
 ```bash
 docker run -p 8080:80 --rm oec2026-web-tethys
 ```
-### 3. Open the App
+#### 3. Open the App
 [localhost:8080](http://localhost:8080)
-### 4. Delete Image
+#### 4. Delete Image
 ```bash
 docker image rm oec2026-web-tethys
 ```
