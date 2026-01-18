@@ -9,10 +9,16 @@
 
 # How to run it
 
-## Docker (Web) - EASIEST
+## Prebuilt Binaries - RECOMMENDED
+
+- Windows and Linux binaries only
+
+[Download](https://github.com/pathinvyas/OEC2026-Practice/releases/latest)
+
+## Docker (Web)
 
 - You will need Docker or Podman installed
-- Worse performance than native
+- Worse performance than native app
 
 ### 1. Build Image
 ```bash
@@ -29,10 +35,10 @@ docker run -p 8080:80 --rm oec2026-web-tethys
 docker image rm oec2026-web-tethys
 ```
 
-## Flutter (Native)
+## Flutter
 
 - You will need the [Flutter SDK](https://docs.flutter.dev/install) installed
-- Best performance
+- Works on all platforms that flutter supports
 
 ```bash
 flutter run --release
