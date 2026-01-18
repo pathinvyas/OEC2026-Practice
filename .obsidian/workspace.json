@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "6ac9aabbf3cb7acb",
+    "type": "split",
+    "children": [
+      {
+        "id": "f754b5fba458f394",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9bdf320b6a7d8d6e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "docs/Flutter Flowchart.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Flutter Flowchart"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5535bb15d59c643d",
+    "type": "split",
+    "children": [
+      {
+        "id": "8018a5c717c2916f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "347d17fa056698b6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "28c546034db700ba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2b9a53436bb119ee",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "300748271c5e4bf4",
+    "type": "split",
+    "children": [
+      {
+        "id": "4173198a68962d9e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1a12b446898e1081",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/Flutter Flowchart.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Flutter Flowchart"
+            }
+          },
+          {
+            "id": "17696ad6ebfb73fd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/Flutter Flowchart.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Flutter Flowchart"
+            }
+          },
+          {
+            "id": "545abe328efcd8c6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6488e977b616ce5f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "2974e72edfe903af",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/Flutter Flowchart.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Flutter Flowchart"
+            }
+          },
+          {
+            "id": "2353aa3cef855ad8",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": true,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "9bdf320b6a7d8d6e",
+  "lastOpenFiles": [
+    "ios/Runner/GeneratedPluginRegistrant.m",
+    "ios/Runner/GeneratedPluginRegistrant.h",
+    "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
+    "android/app/src/main/java/io/flutter/plugins",
+    "android/app/src/main/java/io/flutter",
+    "android/app/src/main/java/io",
+    "android/app/src/main/java",
+    "macos/Flutter/ephemeral/flutter_export_environment.sh",
+    "macos/Flutter/ephemeral/Flutter-Generated.xcconfig",
+    "macos/Flutter/ephemeral",
+    "ios/Flutter/flutter_export_environment.sh",
+    "README.md",
+    "docs/Flutter Flowchart.canvas",
+    "docs/README.md"
+  ]
+}

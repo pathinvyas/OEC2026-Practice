@@ -1,0 +1,13 @@
+{
+  "hidden": true,
+  "hiddenList": [
+    "windows",
+    "web",
+    "test",
+    "macos",
+    "linux",
+    "lib",
+    "ios",
+    "android"
+  ]
+}
