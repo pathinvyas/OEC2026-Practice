@@ -12,7 +12,7 @@
 ### Docker (Web) - EASIEST
 
 - You will need Docker or Podman installed
-- Worse performance than [[#Flutter (Native)|native]]
+- Worse performance than native
 
 #### 1. Build Image
 ```bash
