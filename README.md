@@ -32,7 +32,7 @@ docker image rm oec2026-web-tethys
 ## Flutter (Native)
 
 - You will need the [Flutter SDK](https://docs.flutter.dev/install) installed
-- Better performance than the web version
+- Best performance
 
 ```bash
 flutter run --release
