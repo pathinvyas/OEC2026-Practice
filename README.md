@@ -9,20 +9,31 @@
 
 ## How to run it
 
-### Production
+### Docker (Web) - EASIEST
 
+- You will need Docker or Podman installed
+- Worse performance than [[#Flutter (Native)|native]]
+
+#### 1. Build Image
+```bash
+docker build -t oec2026-web-tethys .
 ```
+#### 2. Run Image
+```bash
+docker run -p 8080:80 --rm oec2026-web-tethys
+```
+#### 3. Open the App
+[localhost:8080](http://localhost:8080)
+#### 4. Delete Image
+```bash
+docker image rm oec2026-web-tethys
+```
+
+### Flutter (Native)
+
+- You will need the [Flutter SDK](https://docs.flutter.dev/install) installed
+- Better performance than the web version
+
+```bash
 flutter run --release
-```
-
-### Development
-
-```
-flutter run
-```
-
-#### Web
-
-```
-flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0 --release
 ```
