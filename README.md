@@ -18,6 +18,7 @@
 ## Docker (Web)
 
 - You will need Docker or Podman installed
+- Works on pretty much every platform
 - Worse performance than native app
 
 #### 1. Build Image
@@ -38,7 +39,7 @@ docker image rm oec2026-web-tethys
 ## Flutter
 
 - You will need the [Flutter SDK](https://docs.flutter.dev/install) installed
-- Works on all platforms that flutter supports
+- Works on all platforms that Flutter supports
 
 ```bash
 flutter run --release
