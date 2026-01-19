@@ -2,15 +2,15 @@ import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
 
-void backgroundEntry(SendPort backgroundSendPort) async {
-  ReceivePort backgroundReceivePort = ReceivePort();
+void backgroundEntry(SendPort servicePort) async {
+  ReceivePort isolatePort = ReceivePort();
 
-  backgroundSendPort.send(backgroundReceivePort.sendPort);
+  servicePort.send(isolatePort.sendPort);
 
   if (kDebugMode) print("Background Isolate Ready");
 
   // Listen for messages forever
-  await for (var message in backgroundReceivePort) {
+  await for (var message in isolatePort) {
     String data = message[0];
     SendPort replyPort = message[1];
 
