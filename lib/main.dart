@@ -2,8 +2,13 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:oec2026/services/background_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Needed when main is async
+
+  await BackgroundService().init(); // Start the background worker
+
   runApp(const MyApp());
 }
 
@@ -32,7 +37,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _csvInfo = "";
 
-  void _getCSVData() async {
+  void _loadCSV() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ["csv"],
@@ -79,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             SizedBox(height: 20),
 
-            ElevatedButton(onPressed: _getCSVData, child: Text("Add CSV")),
+            ElevatedButton(onPressed: _loadCSV, child: Text("Add CSV")),
           ],
         ),
       ),
