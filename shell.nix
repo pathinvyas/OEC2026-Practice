@@ -2,7 +2,6 @@
   pkgs ? import <nixpkgs> {
     config = {
       allowUnfree = true;
-      android_sdk.accept_license = true;
     };
   },
 }:
@@ -29,9 +28,11 @@ pkgs.mkShell {
   buildInputs = [
     pkgs.git
     unstable.flutter
+
+    pkgs.google-chrome
   ];
 
   shellHook = ''
-    export PATH=$ANDROID_HOME/platform-tools:$PATH
+    export CHROME_EXECUTABLE="${pkgs.google-chrome}/bin/google-chrome-stable"
   '';
 }

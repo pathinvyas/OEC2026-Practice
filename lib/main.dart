@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'OEC2026',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'OEC2026'),
     );
   }
 }
@@ -27,12 +30,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String _csvInfo = "";
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void _getCSVData() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ["csv"],
+    );
+
+    try {
+      if (result != null) {
+        File file = File(result.files.single.path!);
+        String csvContent = await file.readAsString();
+        setState(() {
+          _csvInfo = csvContent;
+        });
+      } else {
+        throw Exception("User canceled file picker");
+      }
+    } catch (e) {
+      debugPrint("Failed to get CSV data: $e");
+    }
   }
 
   @override
@@ -46,18 +64,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Container(
+              height: 200,
+              width: 500,
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SelectableText(_csvInfo),
+                ),
+              ),
             ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(onPressed: _getCSVData, child: Text("Add CSV")),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
