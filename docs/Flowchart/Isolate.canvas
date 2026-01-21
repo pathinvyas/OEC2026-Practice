@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"a5a5bc6b3babca55","type":"text","text":"loadCSV","x":-360,"y":-300,"width":250,"height":60,"color":"6"},
+		{"id":"60d350241c6ed87d","type":"text","text":"Get file path passed and turn it into a file","x":-360,"y":-160,"width":250,"height":60},
+		{"id":"8fc5c98b1d3aed47","type":"text","text":"get a list of strings of each line of the csv","x":-359,"y":-56,"width":250,"height":60},
+		{"id":"4507a95a0a3cd0df","type":"text","text":"is there a string i havent parsed yet","x":-360,"y":60,"width":250,"height":60},
+		{"id":"0b5b29bb5c8e6164","type":"text","text":"","x":20,"y":280,"width":250,"height":60},
+		{"id":"1e1e19f2967eed33","x":-360,"y":200,"width":250,"height":60,"type":"text","text":""}
+	],
+	"edges":[
+		{"id":"79d119a68daa75a0","fromNode":"a5a5bc6b3babca55","fromSide":"bottom","toNode":"60d350241c6ed87d","toSide":"top"},
+		{"id":"d411a382cf1e9231","fromNode":"60d350241c6ed87d","fromSide":"bottom","toNode":"8fc5c98b1d3aed47","toSide":"top"},
+		{"id":"f77da41674838dc3","fromNode":"8fc5c98b1d3aed47","fromSide":"bottom","toNode":"4507a95a0a3cd0df","toSide":"top"},
+		{"id":"dc799eb40610075f","fromNode":"4507a95a0a3cd0df","fromSide":"right","toNode":"0b5b29bb5c8e6164","toSide":"top","color":"1"},
+		{"id":"a4b5e5edd4eda764","fromNode":"4507a95a0a3cd0df","fromSide":"bottom","toNode":"1e1e19f2967eed33","toSide":"top","color":"4"}
+	]
+}

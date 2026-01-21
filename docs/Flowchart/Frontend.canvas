@@ -1,0 +1,41 @@
+{
+	"nodes":[
+		{"id":"e7f8b905e2ed0106","x":-316,"y":-278,"width":250,"height":60,"color":"6","type":"text","text":"Load CSV button clicked"},
+		{"id":"dad2e8899e734af2","x":-316,"y":-120,"width":250,"height":60,"color":"5","type":"text","text":"Prompt user to pick a CSV"},
+		{"id":"2cf41639f63e704b","x":-316,"y":0,"width":250,"height":60,"type":"text","text":"Did user pick an actual file"},
+		{"id":"5f55353cb84e0151","x":-660,"y":140,"width":250,"height":60,"type":"text","text":"Start load timer"},
+		{"id":"7ed6a1785c84d24a","type":"text","text":"Run loadCSV on the Isolate","x":-660,"y":280,"width":250,"height":60},
+		{"id":"48b3725bb8e9d87b","x":-316,"y":660,"width":250,"height":60,"color":"6","type":"text","text":"End"},
+		{"id":"67f5d06cad322cbe","x":200,"y":-278,"width":250,"height":60,"color":"6","type":"text","text":"Calculate best path button clicked"},
+		{"id":"89ec6deda9ad90ba","x":200,"y":-120,"width":250,"height":85,"type":"text","text":"Get the Pathfinding algorithm to use from the drop-down box  "},
+		{"id":"0681dbbafea1b08a","type":"text","text":"Start load timer","x":200,"y":30,"width":250,"height":60},
+		{"id":"97177dadac7898d4","type":"text","text":"Run doPathfinding on the Isolate","x":200,"y":170,"width":250,"height":60},
+		{"id":"2d36a7d1649ef021","type":"text","text":"Stop timer","x":200,"y":310,"width":250,"height":60},
+		{"id":"62365d5949ed72ee","type":"text","text":"Did complete successfully?","x":200,"y":440,"width":250,"height":60},
+		{"id":"17c44e3f5f0e4858","type":"text","text":"Show error","x":540,"y":440,"width":250,"height":60},
+		{"id":"98e2029c6f32ef5e","x":-660,"y":530,"width":250,"height":60,"type":"text","text":"Did complete successfully?"},
+		{"id":"4f823bba9bb034f0","x":-316,"y":530,"width":250,"height":60,"type":"text","text":"Show error"},
+		{"id":"80139982c45318c3","type":"text","text":"Stop timer","x":-660,"y":410,"width":250,"height":60},
+		{"id":"f1c8b297782ead06","x":200,"y":590,"width":250,"height":60,"color":"6","type":"text","text":"End"}
+	],
+	"edges":[
+		{"id":"1fecfc030ba14517","fromNode":"e7f8b905e2ed0106","fromSide":"bottom","toNode":"dad2e8899e734af2","toSide":"top"},
+		{"id":"2a82e8d57b0745cb","fromNode":"7ed6a1785c84d24a","fromSide":"bottom","toNode":"80139982c45318c3","toSide":"top"},
+		{"id":"a2cc671c626d86fd","fromNode":"5f55353cb84e0151","fromSide":"bottom","toNode":"7ed6a1785c84d24a","toSide":"top"},
+		{"id":"b4d0fa26250bd990","fromNode":"dad2e8899e734af2","fromSide":"bottom","toNode":"2cf41639f63e704b","toSide":"top"},
+		{"id":"fe6f7646497be236","fromNode":"2cf41639f63e704b","fromSide":"left","toNode":"5f55353cb84e0151","toSide":"top","color":"4"},
+		{"id":"009f2e95ff5ddf02","fromNode":"2cf41639f63e704b","fromSide":"bottom","toNode":"4f823bba9bb034f0","toSide":"top","color":"1"},
+		{"id":"2c8034ec71fbfc31","fromNode":"98e2029c6f32ef5e","fromSide":"right","toNode":"4f823bba9bb034f0","toSide":"left","color":"1"},
+		{"id":"6138474321f65351","fromNode":"4f823bba9bb034f0","fromSide":"bottom","toNode":"48b3725bb8e9d87b","toSide":"top"},
+		{"id":"334ac72cc4aa615e","fromNode":"67f5d06cad322cbe","fromSide":"bottom","toNode":"89ec6deda9ad90ba","toSide":"top"},
+		{"id":"6163b96d411ed6d7","fromNode":"89ec6deda9ad90ba","fromSide":"bottom","toNode":"0681dbbafea1b08a","toSide":"top"},
+		{"id":"6e480f8f92a617ed","fromNode":"0681dbbafea1b08a","fromSide":"bottom","toNode":"97177dadac7898d4","toSide":"top"},
+		{"id":"e8329be28f108f8f","fromNode":"97177dadac7898d4","fromSide":"bottom","toNode":"2d36a7d1649ef021","toSide":"top"},
+		{"id":"c16120fd92904378","fromNode":"2d36a7d1649ef021","fromSide":"bottom","toNode":"62365d5949ed72ee","toSide":"top"},
+		{"id":"00c02a413f324267","fromNode":"62365d5949ed72ee","fromSide":"right","toNode":"17c44e3f5f0e4858","toSide":"left","color":"1"},
+		{"id":"f7adb149bbb899c6","fromNode":"98e2029c6f32ef5e","fromSide":"bottom","toNode":"48b3725bb8e9d87b","toSide":"left","color":"4"},
+		{"id":"15a6422fd599f80a","fromNode":"80139982c45318c3","fromSide":"bottom","toNode":"98e2029c6f32ef5e","toSide":"top"},
+		{"id":"9c697bfe2120060b","fromNode":"62365d5949ed72ee","fromSide":"bottom","toNode":"f1c8b297782ead06","toSide":"top"},
+		{"id":"8324f81614515bee","fromNode":"17c44e3f5f0e4858","fromSide":"bottom","toNode":"f1c8b297782ead06","toSide":"right"}
+	]
+}

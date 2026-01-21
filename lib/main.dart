@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:oec2026/background/background_manager.dart';
-import 'package:oec2026/background/background_message.dart';
+import 'package:oec2026/utils/pathfinding_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Needed when main is async
@@ -51,9 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
       if (path == null) throw Exception("Path is null");
 
-      BackgroundManager().loadCSV(path);
+      await BackgroundManager().loadCSV(path);
+
+      setState(() {
+        _csvInfo = "Loaded: ${BackgroundManager().nodes!.length} nodes";
+      });
     } catch (e) {
-      debugPrint("Failed to get CSV data: $e");
+      setState(() {
+        _csvInfo = "Failed to get CSV data: $e";
+      });
     }
   }
 

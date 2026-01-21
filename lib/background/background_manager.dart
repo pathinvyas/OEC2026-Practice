@@ -2,7 +2,9 @@ import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
 import 'package:oec2026/background/background_isolate.dart';
-import 'package:oec2026/background/background_message.dart';
+import 'package:oec2026/background/background_command.dart';
+import 'package:oec2026/background/background_response.dart';
+import 'package:oec2026/utils/pathfinding_utils.dart';
 
 class BackgroundManager {
   static final BackgroundManager _instance = BackgroundManager._internal();
@@ -21,17 +23,21 @@ class BackgroundManager {
     if (kDebugMode) print("Background Service Ready");
   }
 
-  void loadCSV(String path) async {
+  Map<int, Node>? nodes;
+
+  Future<void> loadCSV(String path) async {
     ReceivePort responsePort = ReceivePort();
 
     if (kDebugMode) print("Sending message");
 
     _isolatePort.send(
-      LoadCSVMessage(replyPort: responsePort.sendPort, path: path),
+      LoadCSVCommand(replyPort: responsePort.sendPort, path: path),
     );
 
-    final response = await responsePort.first;
+    final LoadCSVResponse response = await responsePort.first;
 
-    if (kDebugMode) print("Got response: $response");
+    if (response.error != null) throw Exception(response.error);
+
+    nodes = response.nodes;
   }
 }
