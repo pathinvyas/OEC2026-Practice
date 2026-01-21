@@ -1,4 +1,4 @@
-import 'package:oec2026/utils/pathfinding_utils.dart';
+import 'package:oec2026/logic/models/node.dart';
 
 class BackgroundResponse {
   final String? error;

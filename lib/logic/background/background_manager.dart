@@ -1,10 +1,10 @@
 import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
-import 'package:oec2026/background/background_isolate.dart';
-import 'package:oec2026/background/background_command.dart';
-import 'package:oec2026/background/background_response.dart';
-import 'package:oec2026/utils/pathfinding_utils.dart';
+import 'package:oec2026/logic/background/background_isolate.dart';
+import 'package:oec2026/logic/models/background_command.dart';
+import 'package:oec2026/logic/models/background_response.dart';
+import 'package:oec2026/logic/models/node.dart';
 
 class BackgroundManager {
   static final BackgroundManager _instance = BackgroundManager._internal();

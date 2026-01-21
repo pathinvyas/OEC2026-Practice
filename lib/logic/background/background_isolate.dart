@@ -1,9 +1,10 @@
 import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
-import 'package:oec2026/background/background_command.dart';
-import 'package:oec2026/background/background_response.dart';
-import 'package:oec2026/utils/pathfinding_utils.dart';
+import 'package:oec2026/logic/models/background_command.dart';
+import 'package:oec2026/logic/models/background_response.dart';
+import 'package:oec2026/logic/models/node.dart';
+import 'package:oec2026/logic/csv_logic.dart';
 
 void backgroundEntry(SendPort managerPort) async {
   ReceivePort isolatePort = ReceivePort();
@@ -20,7 +21,7 @@ void backgroundEntry(SendPort managerPort) async {
 
         try {
           Map<int, Node> nodes = await parseRecycleDataFromPath(message.path);
-          
+
           message.replyPort.send(LoadCSVResponse(nodes: nodes));
         } catch (e) {
           if (kDebugMode) {
