@@ -5,8 +5,12 @@ import 'package:oec2026/logic/models/background_command.dart';
 import 'package:oec2026/logic/models/background_response.dart';
 import 'package:oec2026/logic/models/node.dart';
 import 'package:oec2026/logic/csv_logic.dart';
+import 'package:oec2026/logic/models/recycle_route.dart';
 
 void backgroundEntry(SendPort managerPort) async {
+  Map<int, Node>? nodes;
+  Map<int, RecycleRoute>? recycleRoutes;
+
   ReceivePort isolatePort = ReceivePort();
 
   managerPort.send(isolatePort.sendPort);
@@ -20,7 +24,7 @@ void backgroundEntry(SendPort managerPort) async {
         if (kDebugMode) print("Got load csv command for: ${message.path}");
 
         try {
-          Map<int, Node> nodes = await parseRecycleDataFromPath(message.path);
+          nodes = await parseRecycleDataFromPath(message.path);
 
           message.replyPort.send(LoadCSVResponse(nodes: nodes));
         } catch (e) {

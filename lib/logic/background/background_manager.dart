@@ -5,8 +5,12 @@ import 'package:oec2026/logic/background/background_isolate.dart';
 import 'package:oec2026/logic/models/background_command.dart';
 import 'package:oec2026/logic/models/background_response.dart';
 import 'package:oec2026/logic/models/node.dart';
+import 'package:oec2026/logic/models/recycle_route.dart';
 
 class BackgroundManager {
+  Map<int, Node>? nodes;
+  Map<int, RecycleRoute>? recycleRoutes;
+
   static final BackgroundManager _instance = BackgroundManager._internal();
   factory BackgroundManager() => _instance;
   BackgroundManager._internal();
@@ -21,9 +25,7 @@ class BackgroundManager {
     _isolatePort = await managerPort.first;
 
     if (kDebugMode) print("Background Service Ready");
-  }
-
-  Map<int, Node>? nodes;
+  }  
 
   Future<void> loadCSV(String path) async {
     ReceivePort responsePort = ReceivePort();
