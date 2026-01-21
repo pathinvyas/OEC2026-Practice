@@ -2,12 +2,13 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:oec2026/services/background_service.dart';
+import 'package:oec2026/background/background_manager.dart';
+import 'package:oec2026/background/background_message.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Needed when main is async
 
-  await BackgroundService().init(); // Start the background worker
+  await BackgroundManager().init(); // Start the background worker
 
   runApp(const MyApp());
 }
@@ -44,15 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     try {
-      if (result != null) {
-        File file = File(result.files.single.path!);
-        String csvContent = await file.readAsString();
-        setState(() {
-          _csvInfo = csvContent;
-        });
-      } else {
-        throw Exception("User canceled file picker");
-      }
+      if (result == null) throw Exception("User canceled file picker");
+
+      final path = result.files.single.path;
+
+      if (path == null) throw Exception("Path is null");
+
+      BackgroundManager().loadCSV(path);
     } catch (e) {
       debugPrint("Failed to get CSV data: $e");
     }
