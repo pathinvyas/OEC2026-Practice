@@ -17,18 +17,46 @@ class _MapScreenState extends State<MapScreen> {
       options: MapOptions(
         crs: const CrsSimple(),
         initialCenter: const LatLng(0, 0),
-        initialZoom: 1.0,
+        initialZoom: 20,
+        maxZoom: 20,
+        minZoom: -4,
+        
       ),
       children: [
         GridLayer(),
-        
+
         MarkerLayer(
           markers: [
-            Marker(point: LatLng(1, 1), child: FlutterLogo()),
+            Marker(
+              point: LatLng(
+                MapScaler.scaleDown(15663244),
+                MapScaler.scaleDown(36240801),
+              ),
+              child: FlutterLogo(),
+            ),
+            Marker(
+              point: LatLng(
+                MapScaler.scaleDown(1),
+                MapScaler.scaleDown(1),
+              ),
+              child: FlutterLogo(),
+            ),
             Marker(point: LatLng(0, 0), child: FlutterLogo()),
           ],
         ),
       ],
     );
+  }
+}
+
+class MapScaler {
+  static const double scaleFactor = 1000000.0;
+
+  static double scaleDown(double realValue) {
+    return realValue / scaleFactor;
+  }
+
+  static double scaleUp(double mapValue) {
+    return mapValue * scaleFactor;
   }
 }
