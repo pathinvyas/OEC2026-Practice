@@ -1,3 +1,5 @@
+import 'package:oec2026/logic/map_scaler.dart';
+
 enum NodeType {
   waste,
   local_sorting_facility, // ignore: constant_identifier_names
@@ -25,5 +27,13 @@ class Node {
   @override
   String toString() {
     return "Node(nodeID: $nodeID, latitude: $latitude, longitude: $longitude, nodeType: $nodeType, plasticAmount: $plasticAmount, risk: $risk)";
+  }
+
+  double scaledLatitude() {
+    return MapScaler.scaleDownInt(latitude);
+  }
+
+  double scaledLongitude() {
+    return MapScaler.scaleDownInt(longitude);
   }
 }

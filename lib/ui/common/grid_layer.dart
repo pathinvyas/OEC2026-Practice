@@ -1,6 +1,9 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+
 
 class GridLayer extends StatelessWidget {
   const GridLayer({super.key});
@@ -33,34 +36,41 @@ class _GridPainter extends CustomPainter {
 
     double visibleWidth = (maxX - minX).abs();
 
-    double gridStep;
+    double stepSize = _calculateStepSize(visibleWidth);
 
-    if (visibleWidth < 2) {
-      gridStep = 0.1; // Real: 100k increments
-    } else if (visibleWidth < 10) {
-      gridStep = 1.0; // Real: 1 Million increments (Standard)
-    } else if (visibleWidth < 50) {
-      gridStep = 5.0; // Real: 5 Million increments
-    } else {
-      gridStep = 10.0; // Real: 10 Million increments
-    }
+    final startX = (minX / stepSize).floor() * stepSize;
 
-    final startX = (minX / gridStep).floor() * gridStep;
-
-    for (double x = startX; x <= maxX; x += gridStep) {
-      // LatLng(y, x) -> standard CrsSimple mapping
+    for (double x = startX; x <= maxX; x += stepSize) {
       final top = camera.latLngToScreenOffset(LatLng(maxY, x));
       final bottom = camera.latLngToScreenOffset(LatLng(minY, x));
       canvas.drawLine(top, bottom, paint);
     }
 
-    // 5. Draw Horizontal Lines (Y Axis)
-    final startY = (minY / gridStep).floor() * gridStep;
+    final startY = (minY / stepSize).floor() * stepSize;
 
-    for (double y = startY; y <= maxY; y += gridStep) {
+    for (double y = startY; y <= maxY; y += stepSize) {
       final left = camera.latLngToScreenOffset(LatLng(y, minX));
       final right = camera.latLngToScreenOffset(LatLng(y, maxX));
       canvas.drawLine(left, right, paint);
+    }
+  }
+
+  double _calculateStepSize(double visibleRange) {
+    if (visibleRange <= 0.0000001) return 1.0;
+
+    // Change how many grid lines on screen here
+    double targetStep = visibleRange / 25;
+
+    double magnitude = math.pow(10, (math.log(targetStep) / math.ln10).floor()).toDouble();
+
+    double residual = targetStep / magnitude;
+    
+    if (residual > 5) {
+      return 10 * magnitude;
+    } else if (residual > 2) {
+      return 5 * magnitude;
+    } else {
+      return magnitude;
     }
   }
 

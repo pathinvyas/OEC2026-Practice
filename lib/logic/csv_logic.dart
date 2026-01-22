@@ -21,7 +21,7 @@ Future<Map<int, Node>> parseRecycleDataFromPath(String path) async {
       plasticAmount: int.parse(split[4]),
       risk: double.parse(split[5]),
     );
-    
+
     nodes[nodeID] = node;
   }
 

@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
+import 'package:oec2026/logic/map_scaler.dart';
 import 'package:oec2026/logic/models/background_command.dart';
 import 'package:oec2026/logic/models/background_response.dart';
 import 'package:oec2026/logic/models/node.dart';
@@ -26,7 +27,10 @@ void backgroundEntry(SendPort managerPort) async {
         try {
           nodes = await parseRecycleDataFromPath(message.path);
 
-          message.replyPort.send(LoadCSVResponse(nodes: nodes));
+          double scaleFactor = MapScaler.calibrate(nodes.values.toList());
+          if (kDebugMode) print("Auto-Calibrated Scale Factor: $scaleFactor");
+
+          message.replyPort.send(LoadCSVResponse(nodes: nodes, scaleFactor: scaleFactor));
         } catch (e) {
           if (kDebugMode) {
             print(
@@ -35,7 +39,7 @@ void backgroundEntry(SendPort managerPort) async {
           }
 
           message.replyPort.send(
-            LoadCSVResponse(error: e.toString(), nodes: {}),
+            LoadCSVResponse(error: e.toString(), nodes: {}, scaleFactor: 1),
           );
         }
     }

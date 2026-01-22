@@ -2,12 +2,13 @@ import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
 import 'package:oec2026/logic/background/background_isolate.dart';
+import 'package:oec2026/logic/map_scaler.dart';
 import 'package:oec2026/logic/models/background_command.dart';
 import 'package:oec2026/logic/models/background_response.dart';
 import 'package:oec2026/logic/models/node.dart';
 import 'package:oec2026/logic/models/recycle_route.dart';
 
-class BackgroundManager {
+class BackgroundManager with ChangeNotifier {
   Map<int, Node>? nodes;
   Map<int, RecycleRoute>? recycleRoutes;
 
@@ -25,7 +26,7 @@ class BackgroundManager {
     _isolatePort = await managerPort.first;
 
     if (kDebugMode) print("Background Service Ready");
-  }  
+  }
 
   Future<void> loadCSV(String path) async {
     ReceivePort responsePort = ReceivePort();
@@ -41,5 +42,7 @@ class BackgroundManager {
     if (response.error != null) throw Exception(response.error);
 
     nodes = response.nodes;
+    MapScaler.scaleFactor = response.scaleFactor;
+    notifyListeners();
   }
 }
