@@ -176,10 +176,4 @@ class _MapScreenState extends State<MapScreen> {
       ],
     );
   }
-
-  Color _getClusterColor(int count) {
-    if (count > 1000) return Colors.red;
-    if (count > 100) return Colors.orange;
-    return Colors.blue;
-  }
 }
