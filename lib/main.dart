@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'OEC2026',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: const AppScaffold(),
-    );
+      );
   }
 }

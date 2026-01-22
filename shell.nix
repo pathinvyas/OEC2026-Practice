@@ -14,7 +14,7 @@ let
     import
       (builtins.fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
-        sha256 = "0ajsdd3m4qz8mpimfcrawx81cqj8s5ypnkrxpwy7icj9j8gcpksa";
+        sha256 = "1x2znfvddc1wfk1ylpzi83is2nhpmjm0azixs3jqgwdz1a50lk6q";
       })
 
       {

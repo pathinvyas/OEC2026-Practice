@@ -1,10 +1,35 @@
+// ignore_for_file: constant_identifier_names
+
+import 'package:flutter/material.dart';
 import 'package:oec2026/logic/map_scaler.dart';
 
 enum NodeType {
-  waste,
-  local_sorting_facility, // ignore: constant_identifier_names
-  regional_sorting_facility, // ignore: constant_identifier_names
-  regional_recycling_facility, // ignore: constant_identifier_names
+  waste(icon: Icons.delete_outline, color: Colors.black, tooltip: "1. Waste"),
+  local_sorting_facility(
+    icon: Icons.warehouse_outlined,
+    color: Colors.blueGrey,
+    tooltip: "2. Local Sorting Facility",
+  ),
+  regional_sorting_facility(
+    icon: Icons.factory_outlined,
+    color: Colors.blueAccent,
+    tooltip: "3. Regional Sorting Facility",
+  ),
+  regional_recycling_facility(
+    icon: Icons.recycling,
+    color: Colors.green,
+    tooltip: "4. Recycling Facility",
+  );
+
+  final IconData icon;
+  final Color color;
+  final String tooltip;
+
+  const NodeType({
+    required this.icon,
+    required this.color,
+    required this.tooltip,
+  });
 }
 
 class Node {
@@ -35,5 +60,26 @@ class Node {
 
   double scaledLongitude() {
     return MapScaler.scaleDownInt(longitude);
+  }
+
+  Widget iconWidget() {
+    return Tooltip(
+      message: nodeType.tooltip,
+
+      waitDuration: const Duration(milliseconds: 200),
+
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: nodeType.color,
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        child: Center(
+          child: Icon(nodeType.icon, color: Colors.white, size: 20),
+        ),
+      ),
+    );
   }
 }

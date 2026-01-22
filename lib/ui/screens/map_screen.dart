@@ -43,7 +43,7 @@ class _MapScreenState extends State<MapScreen> {
     });
 
     final List<Marker> tempMarkers = [];
-    const int chunkSize = 2000; // Process 2000 at a time
+    const int chunkSize = 2000;
 
     for (var i = 0; i < nodes.length; i += chunkSize) {
       int end = (i + chunkSize < nodes.length) ? i + chunkSize : nodes.length;
@@ -53,7 +53,7 @@ class _MapScreenState extends State<MapScreen> {
           point: LatLng(node.scaledLatitude(), node.scaledLongitude()),
           //width: 10,
           //height: 10,
-          child: const FlutterLogo(),
+          child: node.iconWidget(),
         );
       });
 
@@ -131,6 +131,9 @@ class _MapScreenState extends State<MapScreen> {
         initialZoom: -6,
         maxZoom: MapScaler.getDynamicMaxZoom(),
         minZoom: -6,
+        interactionOptions: InteractionOptions(
+          flags: InteractiveFlag.all & ~InteractiveFlag.rotate
+        )
       ),
       children: [
         GridLayer(),
@@ -152,7 +155,7 @@ class _MapScreenState extends State<MapScreen> {
             builder: (context, markers) {
               return Container(
                 decoration: BoxDecoration(
-                  color: _getClusterColor(markers.length),
+                  color: Colors.blue,
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 2),
                 ),
