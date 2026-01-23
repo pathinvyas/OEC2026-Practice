@@ -1,8 +1,39 @@
 import 'dart:io';
 
+import 'package:csv/csv.dart';
 import 'package:oec2026/logic/models/node.dart';
 
+enum CSVType { nodes, pathfinding }
+
 Future<Map<int, Node>> parseRecycleDataFromPath(String path) async {
+  File file = File(path);
+  List<List<String>> rows = const CsvToListConverter().convert(
+    await file.readAsString(),
+    shouldParseNumbers: false,
+    eol: '\n',
+  );
+
+  Map<int, Node> nodes = {};
+
+  for (List<String> row in rows) {
+    int nodeID = int.parse(row[0]);
+
+    Node node = Node(
+      nodeID: nodeID,
+      latitude: int.parse(row[1]),
+      longitude: int.parse(row[2]),
+      nodeType: NodeType.values.byName(row[3]),
+      plasticAmount: int.parse(row[4]),
+      risk: double.parse(row[5]),
+    );
+
+    nodes[nodeID] = node;
+  }
+
+  return nodes;
+}
+
+Future<Map<int, Node>> parsePathfindingCSVFromPath(String path) async {
   File file = File(path);
   List<String> lines = await file.readAsLines();
 

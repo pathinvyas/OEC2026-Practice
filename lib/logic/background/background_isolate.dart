@@ -30,7 +30,9 @@ void backgroundEntry(SendPort managerPort) async {
           double scaleFactor = MapScaler.calibrate(nodes.values.toList());
           if (kDebugMode) print("Auto-Calibrated Scale Factor: $scaleFactor");
 
-          message.replyPort.send(LoadCSVResponse(nodes: nodes, scaleFactor: scaleFactor));
+          message.replyPort.send(
+            LoadCSVResponse(nodes: nodes, scaleFactor: scaleFactor),
+          );
         } catch (e) {
           if (kDebugMode) {
             print(
