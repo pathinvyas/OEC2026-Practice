@@ -34,7 +34,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _generateMarkers() async {
-    final nodes = BackgroundManager().nodes?.values.toList() ?? [];
+    final nodes = BackgroundManager().nodeManager.toList();
     if (nodes.isEmpty) return;
 
     setState(() {
@@ -79,7 +79,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final int nodeCount = BackgroundManager().nodes?.length ?? 0;
+    final int nodeCount = BackgroundManager().nodeManager.length;
 
     if (nodeCount == 0) {
       return const Center(child: Text("No data loaded. Import a CSV."));

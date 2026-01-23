@@ -9,8 +9,8 @@ import 'package:oec2026/logic/models/node.dart';
 import 'package:oec2026/logic/models/recycle_route.dart';
 
 class BackgroundManager with ChangeNotifier {
-  Map<int, Node>? nodes;
-  Map<int, RecycleRoute>? recycleRoutes;
+  NodeManager nodeManager = NodeManager();
+  RecycleRouteManager recycleRouteManager = RecycleRouteManager();
 
   static final BackgroundManager _instance = BackgroundManager._internal();
   factory BackgroundManager() => _instance;
@@ -41,7 +41,7 @@ class BackgroundManager with ChangeNotifier {
 
     if (response.error != null) throw Exception(response.error);
 
-    nodes = response.nodes;
+    nodeManager = response.nodeManager;
     MapScaler.scaleFactor = response.scaleFactor;
     notifyListeners();
   }

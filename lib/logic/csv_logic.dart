@@ -5,7 +5,7 @@ import 'package:oec2026/logic/models/node.dart';
 
 enum CSVType { nodes, pathfinding }
 
-Future<Map<int, Node>> parseRecycleDataFromPath(String path) async {
+Future<NodeManager> parseRecycleDataFromPath(String path) async {
   File file = File(path);
   List<List<String>> rows = const CsvToListConverter().convert(
     await file.readAsString(),
@@ -13,7 +13,7 @@ Future<Map<int, Node>> parseRecycleDataFromPath(String path) async {
     eol: '\n',
   );
 
-  Map<int, Node> nodes = {};
+  NodeManager nodeManager = NodeManager();
 
   for (List<String> row in rows) {
     int nodeID = int.parse(row[0]);
@@ -27,10 +27,10 @@ Future<Map<int, Node>> parseRecycleDataFromPath(String path) async {
       risk: double.parse(row[5]),
     );
 
-    nodes[nodeID] = node;
+    nodeManager.add(node);
   }
 
-  return nodes;
+  return nodeManager;
 }
 
 Future<Map<int, Node>> parsePathfindingCSVFromPath(String path) async {

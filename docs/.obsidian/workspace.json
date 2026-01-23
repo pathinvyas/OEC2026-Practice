@@ -13,15 +13,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Flowchart/Frontend.canvas",
+                "file": "Flowchart/Isolate.canvas",
                 "viewState": {
-                  "x": 65,
-                  "y": 221,
-                  "zoom": -0.7384557553519543
+                  "x": 210.72797710318014,
+                  "y": 105.83780096927205,
+                  "zoom": -0.49748784490205566
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "Frontend"
+              "title": "Isolate"
             }
           }
         ]
@@ -187,5 +187,7 @@
     }
   },
   "active": "4ddade8025de8018",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Flowchart/Frontend.canvas"
+  ]
 }

@@ -19,11 +19,24 @@ class RecycleRoute {
   });
 
   List<int> toList() {
-    return [
-      wasteNodeId,
-      localSortId,
-      regionalSortId,
-      regionalRecycleId,
-    ];
+    return [wasteNodeId, localSortId, regionalSortId, regionalRecycleId];
+  }
+}
+
+class RecycleRouteManager {
+  final List<RecycleRoute> routes = [];
+
+  double totalScore = 0;
+  double totalDistance = 0;
+  double totalPlasticRecycled = 0;
+  double totalPlasticLost = 0;
+
+  void add(RecycleRoute recycleRoute) {
+    routes.add(recycleRoute);
+
+    totalScore += recycleRoute.totalScore;
+    totalDistance += recycleRoute.totalDistance;
+    totalPlasticRecycled += recycleRoute.plasticLost;
+    totalPlasticLost += recycleRoute.plasticLost;
   }
 }

@@ -30,7 +30,7 @@ class _CSVScreenState extends State<CSVScreen> {
       await BackgroundManager().loadCSV(path);
 
       setState(() {
-        _csvInfo = "Loaded: ${BackgroundManager().nodes!.length} nodes";
+        _csvInfo = "Loaded: ${BackgroundManager().nodeManager.length} nodes";
       });
     } catch (e) {
       setState(() {

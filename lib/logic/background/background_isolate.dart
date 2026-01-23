@@ -9,8 +9,8 @@ import 'package:oec2026/logic/csv_logic.dart';
 import 'package:oec2026/logic/models/recycle_route.dart';
 
 void backgroundEntry(SendPort managerPort) async {
-  Map<int, Node>? nodes;
-  Map<int, RecycleRoute>? recycleRoutes;
+  NodeManager nodeManager = NodeManager();
+  RecycleRouteManager recycleRouteManager = RecycleRouteManager();
 
   ReceivePort isolatePort = ReceivePort();
 
@@ -25,13 +25,13 @@ void backgroundEntry(SendPort managerPort) async {
         if (kDebugMode) print("Got load csv command for: ${message.path}");
 
         try {
-          nodes = await parseRecycleDataFromPath(message.path);
+          nodeManager = await parseRecycleDataFromPath(message.path);
 
-          double scaleFactor = MapScaler.calibrate(nodes.values.toList());
+          double scaleFactor = MapScaler.calibrate(nodeManager.toList());
           if (kDebugMode) print("Auto-Calibrated Scale Factor: $scaleFactor");
 
           message.replyPort.send(
-            LoadCSVResponse(nodes: nodes, scaleFactor: scaleFactor),
+            LoadCSVResponse(nodeManager: nodeManager, scaleFactor: scaleFactor),
           );
         } catch (e) {
           if (kDebugMode) {
@@ -41,7 +41,7 @@ void backgroundEntry(SendPort managerPort) async {
           }
 
           message.replyPort.send(
-            LoadCSVResponse(error: e.toString(), nodes: {}, scaleFactor: 1),
+            LoadCSVResponse(error: e.toString(), nodeManager: nodeManager, scaleFactor: 1),
           );
         }
     }

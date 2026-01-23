@@ -7,8 +7,8 @@ class BackgroundResponse {
 }
 
 class LoadCSVResponse extends BackgroundResponse {
-  final Map<int, Node> nodes;
+  final NodeManager nodeManager;
   final double scaleFactor;
 
-  LoadCSVResponse({super.error, required this.nodes, required this.scaleFactor});
+  LoadCSVResponse({super.error, required this.nodeManager, required this.scaleFactor});
 }

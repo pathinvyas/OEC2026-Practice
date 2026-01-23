@@ -83,3 +83,47 @@ class Node {
     );
   }
 }
+
+class NodeManager {
+  final List<Node> wasteNodes = [];
+  final List<Node> localSortNodes = [];
+  final List<Node> regionalSortNodes = [];
+  final List<Node> recycleNodes = [];
+
+  final Map<int, Node> _nodeIndex = {};
+  int get length => _nodeIndex.length;
+
+  void add(Node node) {
+    if (_nodeIndex.containsKey(node.nodeID)) {
+      throw Exception("Node with ID ${node.nodeID} already exists");
+    }
+
+    _nodeIndex[node.nodeID] = node;
+
+    switch (node.nodeType) {
+      case NodeType.waste:
+        wasteNodes.add(node);
+        break;
+      case NodeType.local_sorting_facility:
+        localSortNodes.add(node);
+        break;
+      case NodeType.regional_sorting_facility:
+        regionalSortNodes.add(node);
+        break;
+      case NodeType.regional_recycling_facility:
+        recycleNodes.add(node);
+        break;
+    }
+  }
+
+  Node? getNodeById(int id) => _nodeIndex[id];
+
+  List<Node> toList() {
+    return [
+      ...wasteNodes,
+      ...localSortNodes,
+      ...regionalSortNodes,
+      ...recycleNodes,
+    ];
+  }
+}
